@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#082b25" />
+    <title>Parkly — Parking made effortless</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Parkly home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span>parkly</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#spaces">Find parking</a>
+        <a href="#hosts">List your space</a>
+      </nav>
+      <div class="header-actions">
+        <button class="text-button" id="loginBtn">Log in</button>
+        <button class="primary-button small" id="hostBtn">Become a host <span>↗</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> The easier way to park</p>
+          <h1 id="hero-heading">Your perfect spot is <em>waiting.</em></h1>
+          <p class="hero-description">Book a safe, verified parking space in seconds — wherever the day takes you.</p>
+          <div class="trust-row">
+            <div class="avatar-stack" aria-label="Trusted by over 120,000 drivers">
+              <span class="avatar avatar-one">A</span><span class="avatar avatar-two">M</span><span class="avatar avatar-three">R</span><span class="avatar avatar-four">J</span>
+            </div>
+            <p><strong>120k+</strong> happy parkers<br><span>across 12 cities</span></p>
+          </div>
+        </div>
+
+        <div class="search-card" id="search-card">
+          <div class="search-card-head">
+            <span class="live-dot"></span>
+            <span>Find a parking space</span>
+            <button class="icon-button" aria-label="Use my location" id="locateBtn">◎</button>
+          </div>
+          <form id="parkingSearch">
+            <label class="field">
+              <span class="field-label">Where are you going?</span>
+              <span class="field-control"><span class="field-icon">⌖</span><input id="locationInput" type="text" value="Connaught Place, New Delhi" aria-label="Destination" /></span>
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span class="field-label">Date</span>
+                <span class="field-control"><span class="field-icon">◫</span><input id="dateInput" type="text" value="Today, 18 Sep" aria-label="Parking date" /></span>
+              </label>
+              <label class="field">
+                <span class="field-label">Time</span>
+                <span class="field-control"><span class="field-icon">◷</span><input id="timeInput" type="text" value="10:00 AM" aria-label="Parking time" /></span>
+              </label>
+            </div>
+            <button type="submit" class="search-button">Search available spaces <span>→</span></button>
+          </form>
+          <div class="suggestions" id="suggestions" aria-live="polite"></div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="building building-left"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="building building-right"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="city-line"></div>
+          <div class="road"></div>
+          <div class="car"><div class="car-window"></div><div class="car-light"></div><span class="wheel w1"></span><span class="wheel w2"></span></div>
+          <div class="map-pin pin-one"><b>₹</b></div>
+          <div class="map-pin pin-two"><b>P</b></div>
+          <div class="map-pin pin-three"><b>★</b></div>
+          <div class="availability-bubble"><span class="pulse"></span><strong>14 spots</strong><small>available nearby</small></div>
+        </div>
+      </section>
+
+      <section class="quick-stats" aria-label="Parkly statistics">
+        <div><strong>12+</strong><span>cities covered</span></div>
+        <div><strong>4,800</strong><span>verified spaces</span></div>
+        <div><strong>4.9/5</strong><span>average experience</span></div>
+        <div><strong>&lt; 2 min</strong><span>to book a spot</span></div>
+      </section>
+
+      <section class="spaces-section" id="spaces" aria-labelledby="spaces-heading">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow"><span></span> Popular around you</p>
+            <h2 id="spaces-heading">Park closer. <em>Do more.</em></h2>
+          </div>
+          <a href="#spaces" class="view-all" id="viewAllBtn">View all spaces <span>→</span></a>
+        </div>
+        <div class="filter-row" role="group" aria-label="Parking filters">
+          <button class="filter active" data-filter="all">All spaces</button>
+          <button class="filter" data-filter="covered">Covered</button>
+          <button class="filter" data-filter="ev">EV charging</button>
+          <button class="filter" data-filter="secure">24/7 security</button>
+          <button class="filter filter-more" id="filterMore">More filters <span>⌄</span></button>
+        </div>
+        <div class="parking-grid" id="parkingGrid"></div>
+      </section>
+
+      <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
+        <div class="how-visual">
+          <div class="route-card">
+            <div class="route-top"><span class="mini-mark">P</span><span>YOUR ROUTE</span><button>•••</button></div>
+            <div class="route-map"><i class="route-line"></i><i class="route-dot from"></i><i class="route-dot to"></i><span class="route-label from-label">You</span><span class="route-label to-label">Your spot</span><div class="route-car">▰</div></div>
+            <div class="arrival-row"><div><span>ARRIVING IN</span><strong>3 min</strong></div><button>Navigate <span>↗</span></button></div>
+          </div>
+          <div class="float-card rating-float"><span>★</span><strong>4.9</strong><small>average rating</small></div>
+          <div class="float-card secure-float"><span>✓</span><strong>Verified</strong><small>spaces only</small></div>
+        </div>
+        <div class="how-copy">
+          <p class="eyebrow"><span></span> Simple by design</p>
+          <h2 id="how-heading">Park without the<br><em>runaround.</em></h2>
+          <div class="steps">
+            <article class="step active-step"><span class="step-number">01</span><div><h3>Search your destination</h3><p>Tell us where you’re headed. We’ll show you the best spots nearby.</p></div></article>
+            <article class="step"><span class="step-number">02</span><div><h3>Book in a few taps</h3><p>Compare spaces, choose your time, and reserve instantly.</p></div></article>
+            <article class="step"><span class="step-number">03</span><div><h3>Arrive with confidence</h3><p>Get directions and access details right when you need them.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="host-section" id="hosts">
+        <div class="host-copy">
+          <p class="eyebrow light"><span></span> For space owners</p>
+          <h2>Your empty space<br>could go <em>further.</em></h2>
+          <p>Turn your driveway, plot, or parking bay into a dependable monthly income — on your terms.</p>
+          <button class="secondary-button" id="startHosting">Start hosting <span>→</span></button>
+          <div class="host-points"><span>✓ Free to list</span><span>✓ You set the schedule</span><span>✓ Protected payments</span></div>
+        </div>
+        <div class="earnings-card">
+          <div class="earnings-top"><span>YOUR EARNINGS</span><span class="up-badge">↗ 18.4%</span></div>
+          <strong>₹18,460</strong><span class="earnings-sub">this month</span>
+          <div class="chart" aria-label="Monthly earnings chart"><i style="height: 32%"></i><i style="height: 46%"></i><i style="height: 39%"></i><i style="height: 61%"></i><i style="height: 52%"></i><i style="height: 76%"></i><i style="height: 87%"></i><i class="selected-bar" style="height: 98%"></i></div>
+          <div class="chart-labels"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span></div>
+          <div class="payout"><span class="payout-icon">₹</span><div><strong>Next payout</strong><small>Friday, 20 Sep</small></div><span class="payout-value">₹5,280</span></div>
+        </div>
+        <div class="host-shape one"></div><div class="host-shape two"></div>
+      </section>
+
+      <section class="testimonial-section">
+        <p class="eyebrow centered"><span></span> Loved by drivers <span></span></p>
+        <blockquote>“Parkly has changed how I plan every trip into the city. No circling. No stress. Just park and go.”</blockquote>
+        <div class="quote-person"><span class="quote-avatar">SK</span><div><strong>Shruti Kapoor</strong><small>Regular parker, Delhi</small></div></div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="#top"><span class="brand-mark"><i></i><i></i><i></i></span><span>parkly</span></a>
+      <p>Making every journey easier, one spot at a time.</p>
+      <div class="footer-links"><a href="#spaces">Find parking</a><a href="#hosts">Become a host</a><a href="#how-it-works">About us</a><a href="#top">Help center</a></div>
+      <span class="footer-copy">© 2026 Parkly Technologies</span>
+    </footer>
+
+    <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+        <div class="modal-icon" id="modalIcon">✓</div>
+        <p class="eyebrow" id="modalEyebrow"><span></span> Ready when you are</p>
+        <h2 id="modalTitle">Your parking<br>is reserved.</h2>
+        <p id="modalText">We’ll send directions and access information to your phone.</p>
+        <button class="primary-button" id="modalAction">Done <span>→</span></button>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
