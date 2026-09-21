@@ -1,0 +1,17 @@
+{
+  "name": "parkly-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure parking discovery, allocation and reservation API.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test",
+    "check": "node --check server.js && node --check src/config.js && node --check src/store.js && node --check src/security.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "license": "UNLICENSED"
+}
